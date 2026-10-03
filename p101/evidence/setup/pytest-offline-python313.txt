@@ -1,4 +1,21 @@
-.........                                                                [100%]
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- <PROJECT_ROOT>\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: <PROJECT_ROOT>
+configfile: pytest.ini (WARNING: ignoring pytest config in setup.cfg!)
+plugins: cov-7.1.0, httpbin-2.1.0, mock-3.16.0
+collecting ... collected 9 items
+
+tests/test_offline.py::test_offline PASSED                               [ 11%]
+tests/test_offline.py::test_offline_raw PASSED                           [ 22%]
+tests/test_offline.py::test_offline_raw_empty_should_use_POST PASSED     [ 33%]
+tests/test_offline.py::test_offline_form PASSED                          [ 44%]
+tests/test_offline.py::test_offline_json PASSED                          [ 55%]
+tests/test_offline.py::test_offline_multipart PASSED                     [ 66%]
+tests/test_offline.py::test_offline_from_file PASSED                     [ 77%]
+tests/test_offline.py::test_offline_chunked PASSED                       [ 88%]
+tests/test_offline.py::test_offline_download PASSED                      [100%]
+
 ============================== warnings summary ===============================
 tests/test_offline.py::test_offline_chunked
   <PROJECT_ROOT>\httpie\cli\argparser.py:159: ResourceWarning: unclosed file <_io.BufferedReader name='<PROJECT_ROOT>\\\\\\tests\\\\\\fixtures\\\\\\test.txt'>
@@ -7,4 +24,4 @@ tests/test_offline.py::test_offline_chunked
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-9 passed, 1 warning in 0.72s
+======================== 9 passed, 1 warning in 0.72s =========================

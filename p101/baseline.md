@@ -1,241 +1,109 @@
-\# P101 Baseline
+# Project Baseline
 
+## Repository
 
+- Repository: https://github.com/ChimeraChat/Httpie-cli-project
+- Branch: `dv033g`
+- Baseline commit: `5b604c37c6c67e18e7c3e9aee6c88a8c22b98345`
+- HTTPie version: `3.2.4`
 
-\## Repository
+No HTTPie source code had been modified when this baseline was established.
 
+---
 
+## Environment attempt 1 — Python 3.14
 
-Repository:
+**Date:** 2026-10-03
+**Python:** `3.14.0`
+**pip:** `26.0.1`
 
-https://github.com/ChimeraChat/Httpie-cli-project
-
-
-
-Working branch:
-
-`dv033g`
-
-
-
-Baseline commit:
-
-`5b604c37c6c67e18e7c3e9aee6c88a8c22b98345`
-
-
-
-\## Environment attempt 1
-
-
-
-Date:
-
-2026-10-03
-
-
-
-Python:
-
-`3.14.0`
-
-
-
-pip:
-
-`26.0.1`
-
-
-
-HTTPie:
-
-`3.2.4`
-
-
-
-\## CLI sanity check
-
-
-
-Command:
-
-
+### CLI sanity check
 
 `http --version`
 
+**Result:** PASS — HTTPie started successfully.
 
-
-Result:
-
-
-
-PASS — HTTPie started successfully and reported version 3.2.4.
-
-
-
-Evidence:
-
-
-
-`p101/evidence/setup/environment-python314.txt`
-
-
-
-\## Offline request construction
-
-
-
-Command:
-
-
+### Offline request construction
 
 `http --offline example.org hello=world`
 
-
-
-Result:
-
-
-
-PASS — HTTPie constructed and printed a POST request in offline mode.
-
-
-
-Evidence:
-
-
-
-`p101/evidence/setup/offline-python314.txt`
-
-
-
-\## Existing test suite
-
-
-
-Command:
-
-
-
-`python -m pytest`
-
-
-
-Result:
-
-
-
-BLOCKED BEFORE TEST COLLECTION.
-
-
-
-Pytest failed while loading the `pytest\_httpbin` plugin. The failure occurred in
-
-the dependency chain before HTTPie's tests were collected.
-
-
-
-Final exception:
-
-
-
-`AttributeError: module 'ast' has no attribute 'Str'`
-
-
-
-Evidence:
-
-
-
-`p101/evidence/setup/pytest-python314.txt`
-
-
-
-\## Interpretation
-
-
-
-The failure is currently classified as a test-environment compatibility issue,
-
-not as a failure in HTTPie's production code or an HTTPie test failure, because
-
-pytest terminated during plugin loading before test collection.
-
-
-
-HTTPie itself and the selected offline functionality were executable under
-
-Python 3.14.0.
-
-
-
-\## Next action
-
-
-
-Test the existing HTTPie test environment with an earlier Python version before
-
-making changes to the HTTPie source code or test suite.
-
-
-
-The Python 3.14 result is retained as baseline/setup evidence.
-
-
-## Environment attempt 2
-
-Date:
-2026-10-04
-
-Python:
-`3.13.16`
-
-HTTPie:
-`3.2.4`
-
-pytest:
-`9.1.1`
+**Result:** PASS — HTTPie constructed and printed a POST request in offline mode.
 
 ### Existing test suite
 
-Command:
+`python -m pytest`
+
+**Result:** BLOCKED BEFORE TEST COLLECTION.
+
+Pytest failed while loading `pytest_httpbin` through the httpbin/Flask/Werkzeug dependency chain.
+
+Final exception:
+
+`AttributeError: module 'ast' has no attribute 'Str'`
+
+### Interpretation
+
+HTTPie itself and the selected offline functionality worked under Python 3.14, but the existing test environment was incompatible with this Python version. The failure occurred before HTTPie tests were collected and is therefore treated as an environment/setup issue rather than an HTTPie test failure.
+
+### Evidence
+
+- `p101/evidence/setup/environment-python314.txt`
+- `p101/evidence/setup/offline-python314.txt`
+- `p101/evidence/setup/pytest-python314.txt`
+
+---
+
+## Environment attempt 2 — Python 3.13
+
+**Date:** 2026-10-04
+**Python:** `3.13.16`
+**HTTPie:** `3.2.4`
+**pytest:** `9.1.1`
+
+### Full existing test suite
 
 `python -m pytest`
 
-Result:
+**Result:**
 
-1028 tests collected.
-
+- 1028 tests collected
 - 1003 passed
 - 2 failed
 - 19 skipped
 - 4 xfailed
 - 113 warnings
+- Execution time: approximately 118 s
 
-Execution time:
-approximately 118 seconds.
-
-The two failures occurred in `tests/test_encoding.py` and both concern
-Big5 charset detection:
+Both failures occurred in `tests/test_encoding.py` and concern Big5 charset detection:
 
 - `test_terminal_output_response_charset_detection`
 - `test_terminal_output_request_charset_detection`
 
-The second failing test exercises request charset detection in offline mode.
+The second failure exercises request charset detection in offline mode.
 
-The dedicated `tests/test_offline.py` test group otherwise passed during the
-full baseline run.
+### Focused offline baseline
+
+`python -m pytest tests/test_offline.py -vv`
+
+**Result:**
+
+- 9 collected
+- 9 passed
+- 0 failed
+- 1 warning
+- Execution time: 0.76 s
+
+The warning was a `ResourceWarning` related to an unclosed file handle during `test_offline_chunked`.
 
 ### Interpretation
 
-Python 3.13 provides a usable development and test environment for this
-project. Unlike Python 3.14, pytest successfully loads the test environment
-and executes the existing suite.
+Python 3.13 provides a usable development and test environment for the project.
 
-The two encoding failures are retained as part of the baseline. They are not
-currently classified as newly discovered defects because related upstream
-work already exists concerning these exact tests and Big5 charset detection.
+The two Big5 test failures are included in the baseline, but they were already documented in the project before this
+test run. They are therefore not treated as new defects found during this project.
 
-No HTTPie source code has been modified at this stage.
+The dedicated offline test suite passed all tests. This environment will therefore be used for continued baseline
+analysis and test development.
 
 ### Evidence
 
@@ -244,3 +112,14 @@ No HTTPie source code has been modified at this stage.
 - `p101/evidence/setup/pytest-python313.txt`
 - `p101/evidence/setup/pytest-offline-python313.txt`
 - `p101/evidence/setup/pytest-encoding-python313.txt`
+
+---
+
+The usable project baseline is:
+
+- Python `3.13.16`
+- HTTPie `3.2.4`
+- baseline commit `5b604c37c6c67e18e7c3e9aee6c88a8c22b98345`
+- existing suite: `1003 passed / 2 failed`
+- offline suite: `9 passed / 0 failed`
+
