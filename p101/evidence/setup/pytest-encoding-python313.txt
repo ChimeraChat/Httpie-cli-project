@@ -1,0 +1,57 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- <PROJECT_ROOT>\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: <PROJECT_ROOT>
+configfile: pytest.ini (WARNING: ignoring pytest config in setup.cfg!)
+plugins: cov-7.1.0, httpbin-2.1.0, mock-3.16.0
+collecting ... collected 53 items / 47 deselected / 6 selected
+
+tests/test_encoding.py::test_terminal_output_response_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] FAILED [ 16%]
+tests/test_encoding.py::test_terminal_output_response_charset_detection[windows-1250-V\u0161ichni lid\xe9 jsou si rovni. V\u0161ichni lid\xe9 jsou si rovni.] PASSED [ 33%]
+tests/test_encoding.py::test_terminal_output_response_charset_detection[utf-8-V\u0161ichni lid\xe9 jsou si rovni. V\u0161ichni lid\xe9 jsou si rovni.] PASSED [ 50%]
+tests/test_encoding.py::test_terminal_output_request_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] FAILED [ 66%]
+tests/test_encoding.py::test_terminal_output_request_charset_detection[windows-1250-V\u0161ichni lid\xe9 jsou si rovni. V\u0161ichni lid\xe9 jsou si rovni.] PASSED [ 83%]
+tests/test_encoding.py::test_terminal_output_request_charset_detection[utf-8-V\u0161ichni lid\xe9 jsou si rovni. V\u0161ichni lid\xe9 jsou si rovni.] PASSED [100%]
+
+================================== FAILURES ===================================
+_ test_terminal_output_response_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] _
+
+text = '卷首卷首卷首卷首卷卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首', charset = 'big5'
+
+    @pytest.mark.parametrize('charset, text', CHARSET_TEXT_PAIRS)
+    @responses.activate
+    def test_terminal_output_response_charset_detection(text, charset):
+        responses.add(
+            method=responses.POST,
+            url=DUMMY_URL,
+            body=text.encode(charset),
+            content_type='text/plain',
+        )
+        r = http('--form', 'POST', DUMMY_URL)
+>       assert text in r
+E       AssertionError: assert '\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996' in 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\n\n'
+
+tests\test_encoding.py:147: AssertionError
+_ test_terminal_output_request_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] _
+
+charset = 'big5', text = '卷首卷首卷首卷首卷卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首卷首'
+
+    @pytest.mark.parametrize('charset, text', CHARSET_TEXT_PAIRS)
+    def test_terminal_output_request_charset_detection(charset, text):
+        r = http(
+            '--offline',
+            DUMMY_URL,
+            'Content-Type: text/plain',
+            env=MockEnvironment(
+                stdin=text.encode(charset),
+                stdin_isatty=False,
+            ),
+        )
+>       assert text in r
+E       AssertionError: assert '\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996' in 'POST / HTTP/1.1\r\nAccept: application/json, */*;q=0.5\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 70\r\nContent-Type: text/plain\r\nHost: this-should.never-resolve\r\nUser-Agent: HTTPie/3.2.4\r\n\r\n\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\n\n'
+
+tests\test_encoding.py:222: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_encoding.py::test_terminal_output_response_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] - AssertionError: assert '\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996' in 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\n\n'
+FAILED tests/test_encoding.py::test_terminal_output_request_charset_detection[big5-\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996] - AssertionError: assert '\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996\u5377\u9996' in 'POST / HTTP/1.1\r\nAccept: application/json, */*;q=0.5\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 70\r\nContent-Type: text/plain\r\nHost: this-should.never-resolve\r\nUser-Agent: HTTPie/3.2.4\r\n\r\n\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\ubee5\uc1a4\n\n'
+================= 2 failed, 4 passed, 47 deselected in 0.27s ==================

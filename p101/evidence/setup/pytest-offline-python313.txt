@@ -1,0 +1,10 @@
+.........                                                                [100%]
+============================== warnings summary ===============================
+tests/test_offline.py::test_offline_chunked
+  <PROJECT_ROOT>\httpie\cli\argparser.py:159: ResourceWarning: unclosed file <_io.BufferedReader name='<PROJECT_ROOT>\\\\\\tests\\\\\\fixtures\\\\\\test.txt'>
+    self.args, no_options = super().parse_known_args(args, namespace)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+9 passed, 1 warning in 0.72s

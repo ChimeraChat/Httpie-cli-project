@@ -1,0 +1,5 @@
+Python 3.13.16
+pip 26.2.1 from <PROJECT_ROOT>\.venv\Lib\site-packages\pip (python 3.13)
+
+3.2.4
+pytest 9.1.1
