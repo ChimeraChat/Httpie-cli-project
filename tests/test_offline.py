@@ -94,3 +94,36 @@ def test_offline_download():
         'https://this-should.never-resolve/foo',
     )
     assert 'GET /foo' in r
+
+
+def test_offline_from_file_sets_content_type():
+    r = http(
+        '--offline',
+        'https://this-should.never-resolve/foo',
+        f'@{FILE_PATH_ARG}'
+    )
+
+    assert 'Content-Type:' in r
+
+
+def test_offline_explicit_method_with_data():
+    r = http(
+        '--offline',
+        'PUT',
+        'https://this-should.never-resolve/foo',
+        'foo=bar'
+    )
+
+    assert 'PUT /foo' in r
+    assert r.json == {'foo': 'bar'}
+
+
+def test_offline_file_preserves_explicit_content_type():
+    r = http(
+        '--offline',
+        'https://this-should.never-resolve/foo',
+        'Content-Type:application/x-custom',
+        f'@{FILE_PATH_ARG}'
+    )
+
+    assert 'Content-Type: application/x-custom' in r
