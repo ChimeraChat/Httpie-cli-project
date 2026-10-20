@@ -264,9 +264,6 @@ Useful for inspecting a request before any network communication takes place.
 </div>
 </div>
 
-<div class="callout">
-Working alone, I chose a focused scope so I could test one behaviour in greater depth.
-</div>
 
 ---
 
@@ -413,40 +410,6 @@ Coverage changed little; branch and behavioural evidence became stronger.
 
 ---
 
-# AI-assisted workflow
-
-<div class="columns">
-<div class="card">
-
-### My work
-
-- Read source code and tests
-- Defined project scope
-- Selected test cases
-- Wrote and revised tests
-- Ran tests and coverage
-- Evaluated the evidence
-
-</div>
-<div class="card">
-
-### AI support
-
-- Codebase orientation
-- Explain unfamiliar code paths
-- Brainstorm candidate test gaps
-- Suggest test code / assertions
-- Review test structure and oracles
-- Organise findings
-
-</div>
-</div>
-
-<div class="callout">
-<strong>AI supported the workflow.</strong> Suggestions were reviewed against the code, existing tests and local results.
-</div>
-
----
 
 # Challenges and lessons learned
 
@@ -476,3 +439,36 @@ Coverage changed little; branch and behavioural evidence became stronger.
 <div class="callout">
 <strong>Next:</strong> conference feedback → remaining investigation → final report.
 </div>
+
+---
+
+# AI-assisted workflow
+
+<div class="columns">
+<div class="card">
+
+### My work
+
+- Read source code and tests
+- Defined project scope
+- Selected test cases
+- Wrote and revised tests
+- Ran tests and coverage
+- Evaluated the evidence
+
+</div>
+<div class="card">
+
+### AI support
+
+- Codebase orientation
+- Explain unfamiliar code paths
+- Brainstorm candidate test gaps
+- Suggest test code / assertions
+- Review test structure and oracles
+- Organise findings
+
+</div>
+</div>
+
+---
