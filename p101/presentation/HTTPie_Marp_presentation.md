@@ -9,152 +9,179 @@ style: |
     font-family: "Aptos", "Segoe UI", sans-serif;
     background: #f7f8fa;
     color: #1f2937;
-    padding: 56px 68px;
+    padding: 52px 64px;
   }
+
   section.lead {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 62%, #334155 100%);
     color: #f8fafc;
   }
+
   section.lead h1,
-  section.lead h2 { color: #ffffff; }
+  section.lead h2 {
+    color: #ffffff;
+  }
+
   h1 {
     color: #0f172a;
     font-size: 44px;
-    margin: 0 0 22px 0;
+    margin: 0 0 20px 0;
   }
+
   h2 {
     color: #334155;
     font-size: 28px;
     font-weight: 500;
   }
+
   h3 {
     color: #0f172a;
     margin-top: 0;
+    margin-bottom: 12px;
   }
-  strong { color: #0f5ca8; }
-  section.lead strong { color: #93c5fd; }
-  code { font-size: 0.88em; }
 
-  pre code {
-    color: #f8fafc;
-    font-size: 22px;
-    line-height: 1.35;
+  strong {
+    color: #0f5ca8;
   }
+
+  section.lead strong {
+    color: #93c5fd;
+  }
+
   .kicker {
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #64748b;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
-  section.lead .kicker { color: #cbd5e1; }
+
+  section.lead .kicker {
+    color: #cbd5e1;
+  }
+
+  .statement {
+    font-size: 31px;
+    line-height: 1.2;
+    font-weight: 650;
+    margin: 12px 0 16px 0;
+  }
+
   .columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 34px;
+    gap: 32px;
     align-items: stretch;
   }
+
   .card {
     background: #ffffff;
     border: 1px solid #dbe2ea;
     border-radius: 14px;
-    padding: 22px 24px;
+    padding: 20px 22px;
   }
-  .card p:last-child { margin-bottom: 0; }
-  .statement {
-    font-size: 31px;
-    line-height: 1.25;
-    font-weight: 650;
-    margin: 18px 0;
+
+  .card p:last-child {
+    margin-bottom: 0;
   }
+
   .muted {
     color: #64748b;
-    font-size: 20px;
+    font-size: 18px;
   }
+
   .callout {
-    margin-top: 24px;
-    padding: 16px 20px;
+    margin-top: 20px;
+    padding: 14px 18px;
     border-left: 5px solid #0f5ca8;
     background: #eaf3fb;
-    font-size: 23px;
+    font-size: 21px;
   }
+
   .flow {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin: 26px 0 10px 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
   }
+
   .flow div {
     background: #ffffff;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
-    padding: 18px 12px;
+    padding: 16px 10px;
     text-align: center;
     font-weight: 650;
-    font-size: 21px;
+    font-size: 20px;
   }
+
   .toolgrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 16px;
+    gap: 16px;
+    margin-top: 14px;
   }
+
   .tool {
     background: #ffffff;
     border: 1px solid #dbe2ea;
     border-radius: 12px;
     padding: 16px 18px;
   }
+
   .tool strong {
     display: block;
-    font-size: 24px;
-    margin-bottom: 6px;
+    font-size: 23px;
+    margin-bottom: 5px;
   }
+
   ul {
-    line-height: 1.34;
+    line-height: 1.28;
     margin-top: 8px;
+    padding-left: 26px;
   }
-  li { margin: 8px 0; }
+
+  li {
+    margin: 7px 0;
+  }
+
+  code {
+    font-size: 0.9em;
+  }
 
   pre {
     background: #0b132b !important;
     border-radius: 14px;
-    padding: 0.9em 1em;
+    padding: 0.8em 0.95em;
   }
 
-  /* Base code text */
   pre code,
   .hljs {
     color: #f8fafc !important;
-    font-size: 0.82em;
-    line-height: 1.35;
+    font-size: 20px;
+    line-height: 1.3;
   }
 
-  /* Keywords: with, as, def, assert */
   .hljs-keyword,
   .hljs-built_in {
     color: #f472b6 !important;
   }
 
-  /* Strings */
   .hljs-string {
     color: #93c5fd !important;
   }
 
-  /* Function / call names */
   .hljs-title,
   .hljs-title.function_,
   .hljs-function {
     color: #facc15 !important;
   }
 
-  /* Comments */
   .hljs-comment {
     color: #94a3b8 !important;
     font-style: italic;
   }
 
-  /* Numbers / constants */
   .hljs-number,
   .hljs-literal {
     color: #c4b5fd !important;
@@ -172,43 +199,73 @@ style: |
 
 ---
 
-# Project introduction
+# What is HTTPie?
 
 <div class="columns">
 <div>
 
-<div class="statement">HTTPie CLI</div>
+<div class="statement">Command-line HTTP client</div>
 
-Command-line HTTP client.
-<div class="kicker">Testing focus</div>
+Used to create, send and inspect HTTP requests.
 
-**`--offline` request construction**
-
-Build and print the request  
-**without sending it.**
+- API testing
+- debugging requests
+- quick API interaction
 
 </div>
 <div>
 
 ```bash
-http --offline example.org hello=world
+http POST example.org name=Louise
 ```
 
-```text
-CLI input
-   ↓
-prepare request
-   ↓
-print request
-   ↓
-no network send
-```
+<div class="flow">
+  <div>CLI command</div>
+  <div>HTTP request</div>
+  <div>Server / API</div>
+</div>
 
 </div>
 </div>
 
 <div class="callout">
-As I work alone my project is focused on a more narrowed scope: [--offline] request construction.
+HTTPie lets a developer interact with an API directly from the terminal instead of writing a separate script.
+</div>
+
+---
+
+# My testing focus
+
+<div class="columns">
+<div>
+
+<div class="statement">`--offline` request construction</div>
+
+HTTPie still builds the request — but **does not send it**.
+
+```bash
+http --offline POST example.org \
+  name=Louise course=DV033G
+```
+
+</div>
+<div>
+
+<div class="flow">
+  <div>Build</div>
+  <div>Print</div>
+  <div>No send</div>
+</div>
+
+<div style="margin-top: 28px; font-size: 23px; line-height: 1.35;">
+Useful for inspecting a request before any network communication takes place.
+</div>
+
+</div>
+</div>
+
+<div class="callout">
+Working alone, I chose a focused scope so I could test one behaviour in greater depth.
 </div>
 
 ---
@@ -216,35 +273,40 @@ As I work alone my project is focused on a more narrowed scope: [--offline] requ
 # Existing testing
 
 <div class="columns">
-<div class="card">
+<div>
 
 ### Already in place
 
-**Practice:** automated regression testing  
-**Level:** CLI / integration-style  
-**Framework:** pytest  
-**Coverage:** pytest-cov
+- Automated regression tests
+- CLI / integration-style tests
+- `pytest`
+- `pytest-cov`
 
-</div>
-<div class="card">
-
-### First decision
-
-- Inspect existing tests
-- Trace request-building code
-- Map existing coverage
-- Avoid duplicate tests
-
-</div>
+<div class="callout">
+First decision: understand the existing suite before adding anything new.
 </div>
 
-<div class="flow">
-  <div>Test input</div>
-  <div>HTTPie test helper</div>
-  <div>Request construction</div>
-  <div>Captured result</div>
 </div>
+<div>
 
+### Existing test example
+
+<div class="muted">Simplified from the original `--offline` tests.</div>
+
+```python
+def test_offline_json():
+    r = http(
+        '--offline',
+        URL,
+        'foo=bar'
+    )
+
+    assert 'POST /foo' in r
+    assert r.json == {'foo': 'bar'}
+```
+
+</div>
+</div>
 
 ---
 
@@ -253,12 +315,12 @@ As I work alone my project is focused on a more narrowed scope: [--offline] requ
 <div class="columns">
 <div>
 
-### How I chose test cases
+### Test selection
 
 - Relevant to `--offline`
 - Gap in existing coverage
-- Clear and testable oracle
-- Useful as a boundary or option interaction
+- Clear, testable oracle
+- Boundary / option interaction
 
 </div>
 <div>
@@ -266,20 +328,23 @@ As I work alone my project is focused on a more narrowed scope: [--offline] requ
 ### Areas I extended
 
 - Explicit method + request data
-- File and `Content-Type` handling
-- Empty and extensionless files
-- `--chunked` combined with file input
+- File / `Content-Type` handling
+- Empty / extensionless files
+- `--chunked` + file input
 - Verify no network request sent
 
 </div>
 </div>
 
+<div class="callout">
+<strong>Goal:</strong> stronger evidence — not simply more tests.
+</div>
 
 ---
 
 # A representative test
 
-<div class="muted">Simplified from the project test.</div>
+<div class="muted">Simplified from my project test.</div>
 
 <div class="columns">
 <div>
@@ -303,14 +368,15 @@ with mock.patch(
 </div>
 <div>
 
-### Why this test matters
-<br>
-Printed output can still look correct
+### Why this test?
 
-if a network request is sent.
-<br>
+Printed output can still look correct even if a network request is sent.
 
 **Oracle:** `Session.send()` must never be called.
+
+<div class="callout">
+The test checks the behaviour promised by `--offline`, not only the printed output.
+</div>
 
 </div>
 </div>
@@ -341,7 +407,6 @@ Connect tests to implementation
 </div>
 </div>
 
-<br>
 <div class="callout">
 Coverage changed little; branch and behavioural evidence became stronger.
 </div>
@@ -356,7 +421,7 @@ Coverage changed little; branch and behavioural evidence became stronger.
 ### My work
 
 - Read source code and tests
-- Defined the project scope
+- Defined project scope
 - Selected test cases
 - Wrote and revised tests
 - Ran tests and coverage
@@ -378,8 +443,7 @@ Coverage changed little; branch and behavioural evidence became stronger.
 </div>
 
 <div class="callout">
-<strong>AI was used as part of the workflow.</strong><br>
-I reviewed suggestions against the code, existing tests and local results.
+<strong>AI supported the workflow.</strong> Suggestions were reviewed against the code, existing tests and local results.
 </div>
 
 ---
@@ -399,7 +463,7 @@ I reviewed suggestions against the code, existing tests and local results.
 </div>
 <div class="card">
 
-### What I learned
+### Lessons learned
 
 - Inspect before extending
 - Strong oracle > test count
@@ -409,3 +473,6 @@ I reviewed suggestions against the code, existing tests and local results.
 </div>
 </div>
 
+<div class="callout">
+<strong>Next:</strong> conference feedback → remaining investigation → final report.
+</div>
