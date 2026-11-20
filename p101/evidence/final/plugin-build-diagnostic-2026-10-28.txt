@@ -1,0 +1,22 @@
+Command: F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Scripts\python.exe -m pip install --prefer-binary --prefix=F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\prefix --no-warn-script-location -v F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\interface\httpie-p101-diagnostic
+PIP_RETRIES=0; PIP_TIMEOUT=5
+Using pip 26.2.1 from F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Lib\site-packages\pip (python 3.13)
+Processing .\artifacts\plugin-diagnostic\interface\httpie-p101-diagnostic
+  Installing build dependencies: started
+  Running command installing build dependencies
+  Using pip 26.2.1 from F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Lib\site-packages\pip (python 3.13)
+  ERROR: Could not find a version that satisfies the requirement setuptools>=40.8.0 (from versions: none)
+  ERROR: No matching distribution found for setuptools>=40.8.0
+  error: subprocess-exited-with-error
+  
+  × installing build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> No available output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  full command: 'F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Scripts\python.exe' 'F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Lib\site-packages\pip\__pip-runner__.py' install --prefix 'F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\pip-build-env-19tvj2_2\overlay' --no-user --no-warn-script-location --disable-pip-version-check --no-compile --target '' --ignore-installed -v --no-binary :none: --only-binary :none: -i https://pypi.org/simple --prefer-binary -- 'setuptools>=40.8.0'
+  cwd: [inherit]
+  Installing build dependencies: finished with status 'error'
+ERROR: Failed to build 'file:///F:/MIUN_non_onedrive_projects/DV033G/Project/Httpie-cli-project/artifacts/plugin-diagnostic/interface/httpie-p101-diagnostic' when installing build dependencies
+
+PROCESS_EXIT_CODE: 1

@@ -1,3 +1,9 @@
+## DV033G practical testing project
+
+This fork contains a focused extension of HTTPie CLI's offline tests. See the
+[project README](p101/README.md) for scope, setup, reproduction commands,
+baseline comparisons, test-design decisions and saved evidence.
+
 <h2 align="center">
     <a href="https://httpie.io" target="blank_">
         <img height="100" alt="HTTPie" src="https://raw.githubusercontent.com/httpie/cli/master/docs/httpie-logo.svg" />

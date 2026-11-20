@@ -123,3 +123,22 @@ The usable project baseline is:
 - existing suite: `1003 passed / 2 failed`
 - offline suite: `9 passed / 0 failed`
 
+## Final verification — 28 October 2026
+
+The baseline above remains the historical starting point. Final verification
+added one offline error/recovery check after the earlier seven additions,
+bringing the dedicated suite to **17 passing tests**. No production code changed.
+
+Rerunning the original nine and extended seventeen tests in the same final
+environment gave scoped branch-aware coverage of **48% and 50%**, respectively,
+with partial branches **52 and 49**. These are selected-module measurements.
+
+The final full suite collected 1036 tests: **980 passed, 33 failed, 19 skipped,
+4 xfailed**. Nineteen failures show blocked external `pie.dev` sockets; twelve
+are plugin-installation failures, with a separate diagnostic showing unavailable
+isolated-build dependencies; two are the known Big5 cases. This restricted run
+does not establish a green full regression or a directly comparable baseline.
+
+See the [project README](README.md#results-and-evidence) for full commands,
+environment snapshots, saved outputs, failure classification and limitations.
+

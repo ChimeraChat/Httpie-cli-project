@@ -1,0 +1,43 @@
+Plugin installation diagnostic (retry count 0; timeout 5 seconds)
+Exit status: 1
+STDOUT:
+Installing F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\interface\httpie-p101-diagnostic...
+Processing .\artifacts\plugin-diagnostic\interface\httpie-p101-diagnostic
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'error'
+
+STDERR:
+HTTPie 3.2.4
+Requests 2.34.2
+Pygments 2.21.0
+Python 3.13.16 (tags/v3.13.16:cbc944f, Sep 30 2026, 19:17:50) [MSC v.1944 64 bit (AMD64)]
+F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Scripts\python.exe
+Windows 11
+
+<MockEnvironment {'cleanup': <function MockEnvironment.cleanup at 0x000001DFCBB16B60>,
+ 'colors': 0,
+ 'config': {'default_options': [], 'disable_update_warnings': True},
+ 'config_dir': WindowsPath('F:/MIUN_non_onedrive_projects/DV033G/Project/Httpie-cli-project/artifacts/plugin-diagnostic/httpie_config_9gv5ikni'),
+ 'create_temp_config_dir': <function MockEnvironment.create_temp_config_dir at 0x000001DFCBB16AC0>,
+ 'is_windows': False,
+ 'program_name': 'httpie',
+ 'quiet': 0,
+ 'show_displays': False,
+ 'stderr': <tempfile._TemporaryFileWrapper object at 0x000001DFCBCB4CD0>,
+ 'stdin_encoding': 'utf-8',
+ 'stdin_isatty': True,
+ 'stdout': <tempfile._TemporaryFileWrapper object at 0x000001DFCBBF34D0>,
+ 'stdout_encoding': 'utf-8',
+ 'stdout_isatty': True}>
+
+<PluginManager {'adapters': [],
+ 'auth': [<class 'httpie.plugins.builtin.BasicAuthPlugin'>,
+          <class 'httpie.plugins.builtin.DigestAuthPlugin'>,
+          <class 'httpie.plugins.builtin.BearerAuthPlugin'>],
+ 'converters': [],
+ 'formatters': [<class 'httpie.output.formatters.headers.HeadersFormatter'>,
+                <class 'httpie.output.formatters.json.JSONFormatter'>,
+                <class 'httpie.output.formatters.xml.XMLFormatter'>,
+                <class 'httpie.output.formatters.colors.ColorFormatter'>]}>
+Command failed: pip install --prefer-binary --prefix=F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\httpie_config_9gv5ikni\plugins --no-warn-script-location F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\plugin-diagnostic\interface\httpie-p101-diagnostic
+  Can't install 'F:\\MIUN_non_onedrive_projects\\DV033G\\Project\\Httpie-cli-project\\artifacts\\plugin-diagnostic\\interface\\httpie-p101-diagnostic': Failed to build 'file:///F:/MIUN_non_onedrive_projects/DV033G/Project/Httpie-cli-project/artifacts/plugin-diagnostic/interface/httpie-p101-diagnostic' when installing build dependencies

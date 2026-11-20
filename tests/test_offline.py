@@ -1,5 +1,7 @@
 from unittest import mock
 
+from httpie.status import ExitStatus
+
 from .fixtures import FILE_CONTENT, FILE_PATH_ARG, patharg
 from .utils import http
 
@@ -186,3 +188,35 @@ def test_offline_empty_file_body(tmp_path):
     headers, separator, body = r.partition('\r\n\r\n')
     assert separator
     assert body.strip() == ''
+
+
+def test_offline_file_field_error_suggests_form():
+    with mock.patch(
+        'requests.sessions.Session.send',
+        side_effect=AssertionError('Offline mode must not send requests'),
+    ) as send:
+        invalid = http(
+            '--offline',
+            'https://this-should.never-resolve/foo',
+            f'attachment@{FILE_PATH_ARG}',
+            tolerate_error_exit_status=True,
+        )
+        assert invalid.exit_status == ExitStatus.ERROR
+        assert 'Invalid file fields' in invalid.stderr
+        assert 'perhaps you meant --form?' in invalid.stderr
+        assert 'attachment' in invalid.stderr
+        assert 'Traceback' not in invalid.stderr
+        assert not invalid
+
+        corrected = http(
+            '--offline',
+            '--form',
+            'https://this-should.never-resolve/foo',
+            f'attachment@{FILE_PATH_ARG}',
+        )
+        assert corrected.exit_status == ExitStatus.SUCCESS
+        assert 'POST /foo' in corrected
+        assert 'multipart/form-data' in corrected
+        assert 'name="attachment"' in corrected
+        assert FILE_CONTENT in corrected
+        send.assert_not_called()

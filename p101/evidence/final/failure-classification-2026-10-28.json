@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "blocked_external_pie_dev": 19,
+    "known_big5_baseline": 2,
+    "plugin_installation": 12,
+    "unclassified": 0
+  },
+  "tests": {
+    "blocked_external_pie_dev": [
+      "tests/test_cookie_on_redirects.py::test_explicit_user_set_cookie[remote_httpbin]",
+      "tests/test_cookie_on_redirects.py::test_explicit_user_set_cookie_in_session[remote_httpbin]",
+      "tests/test_cookie_on_redirects.py::test_saved_user_set_cookie_in_session[remote_httpbin]",
+      "tests/test_cookie_on_redirects.py::test_explicit_user_set_headers[True-remote_httpbin]",
+      "tests/test_cookie_on_redirects.py::test_explicit_user_set_headers[False-remote_httpbin]",
+      "tests/test_cookie_on_redirects.py::test_saved_session_cookies_on_different_domain",
+      "tests/test_cookie_on_redirects.py::test_saved_session_cookies_on_redirect[httpbin-remote_httpbin-remote_httpbin-False]",
+      "tests/test_cookie_on_redirects.py::test_saved_session_cookies_on_redirect[httpbin-httpbin-remote_httpbin-False]",
+      "tests/test_cookie_on_redirects.py::test_saved_session_cookies_on_redirect[httpbin-remote_httpbin-httpbin-True]",
+      "tests/test_cookie_on_redirects.py::test_saved_session_cookie_pool",
+      "tests/test_sessions.py::test_secure_cookies_on_localhost[remote_httpbin-expected_cookies1]",
+      "tests/test_tokens.py::test_verbose_chunked",
+      "tests/test_uploads.py::test_chunked_json",
+      "tests/test_uploads.py::test_chunked_form",
+      "tests/test_uploads.py::test_chunked_stdin",
+      "tests/test_uploads.py::test_chunked_stdin_multiple_chunks",
+      "tests/test_uploads.py::test_chunked_raw",
+      "tests/test_uploads.py::TestMultipartFormDataFileUpload::test_multipart_chunked",
+      "tests/test_uploads.py::TestRequestBodyFromFilePath::test_request_body_from_file_by_path_chunked"
+    ],
+    "known_big5_baseline": [
+      "tests/test_encoding.py::test_terminal_output_response_charset_detection[big5-\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996]",
+      "tests/test_encoding.py::test_terminal_output_request_charset_detection[big5-\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996\\u5377\\u9996]"
+    ],
+    "plugin_installation": [
+      "tests/test_plugins_cli.py::test_plugins_installation[True]",
+      "tests/test_plugins_cli.py::test_plugins_installation[False]",
+      "tests/test_plugins_cli.py::test_plugin_installation_with_custom_config",
+      "tests/test_plugins_cli.py::test_plugins_listing[True]",
+      "tests/test_plugins_cli.py::test_plugins_listing[False]",
+      "tests/test_plugins_cli.py::test_plugins_listing_multiple",
+      "tests/test_plugins_cli.py::test_plugins_uninstall[True]",
+      "tests/test_plugins_cli.py::test_plugins_uninstall[False]",
+      "tests/test_plugins_cli.py::test_plugins_listing_after_uninstall",
+      "tests/test_plugins_cli.py::test_plugins_uninstall_specific",
+      "tests/test_plugins_cli.py::test_plugins_double_uninstall",
+      "tests/test_plugins_cli.py::test_broken_plugins"
+    ],
+    "unclassified": []
+  },
+  "plugin_diagnostic": "Isolated pip build could not obtain setuptools>=40.8.0; see plugin-build-diagnostic log. This is an installation prerequisite failure, not a failing offline assertion."
+}

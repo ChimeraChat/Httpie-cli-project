@@ -1,0 +1,43 @@
+Date: 2026-10-28T22:01:11.576241+01:00
+Python: 3.13.16 (tags/v3.13.16:cbc944f, Sep 30 2026, 19:17:50) [MSC v.1944 64 bit (AMD64)]
+Command: F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Scripts\python.exe -m pytest tests/test_offline.py::test_offline tests/test_offline.py::test_offline_raw tests/test_offline.py::test_offline_raw_empty_should_use_POST tests/test_offline.py::test_offline_form tests/test_offline.py::test_offline_json tests/test_offline.py::test_offline_multipart tests/test_offline.py::test_offline_from_file tests/test_offline.py::test_offline_chunked tests/test_offline.py::test_offline_download --cov=httpie.client --cov=httpie.uploads --cov=httpie.cli.argparser --cov-branch --cov-report=term-missing -vv -p no:cacheprovider --basetemp=F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\verify-20261028-220109\coverage-original-9
+TEMP/TMP: F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\artifacts\verify-20261028-220109
+
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\.venv\Scripts\python.exe
+rootdir: F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project
+configfile: pytest.ini (WARNING: ignoring pytest config in setup.cfg!)
+plugins: cov-7.1.0, httpbin-2.1.0, mock-3.16.0
+collecting ... collected 9 items
+
+tests/test_offline.py::test_offline PASSED                               [ 11%]
+tests/test_offline.py::test_offline_raw PASSED                           [ 22%]
+tests/test_offline.py::test_offline_raw_empty_should_use_POST PASSED     [ 33%]
+tests/test_offline.py::test_offline_form PASSED                          [ 44%]
+tests/test_offline.py::test_offline_json PASSED                          [ 55%]
+tests/test_offline.py::test_offline_multipart PASSED                     [ 66%]
+tests/test_offline.py::test_offline_from_file PASSED                     [ 77%]
+tests/test_offline.py::test_offline_chunked PASSED                       [ 88%]
+tests/test_offline.py::test_offline_download PASSED                      [100%]
+
+============================== warnings summary ===============================
+tests/test_offline.py::test_offline_chunked
+  F:\MIUN_non_onedrive_projects\DV033G\Project\Httpie-cli-project\httpie\cli\argparser.py:159: ResourceWarning: unclosed file <_io.BufferedReader name='F:\\\\\\MIUN_non_onedrive_projects\\\\\\DV033G\\\\\\Project\\\\\\Httpie-cli-project\\\\\\tests\\\\\\fixtures\\\\\\test.txt'>
+    self.args, no_options = super().parse_known_args(args, namespace)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.13.16-final-0 _______________
+
+Name                      Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------------
+httpie\cli\argparser.py     316    154    146     33    44%   44-45, 48-49, 53-71, 96-106, 111-125, 130-135, 161, 185, 189-192, 208, 210-225, 236-244, 250-260, 263-267, 272->275, 280, 289->301, 292-294, 302-348, 355, 366-377, 380, 404, 423->exit, 431-434, 459-462, 475, 479, 487->exit, 489->exit, 502, 505, 507->519, 509, 511, 514-517, 519->522, 528, 535-540, 547-552, 558, 562-570, 576-596, 601-613
+httpie\client.py            172     50     68     17    65%   51-58, 75-85, 89, 95, 100, 106->136, 109-133, 137-140, 148-153, 178-179, 188, 201->208, 204-207, 225, 255, 271->278, 291-299, 321, 345, 394-400
+httpie\uploads.py           130     79     52      2    34%   22, 32-34, 37-41, 52-53, 56-62, 79-84, 88-93, 103-127, 131-143, 153-188, 213-227, 242-244, 256-269
+---------------------------------------------------------------------
+TOTAL                       618    283    266     52    48%
+======================== 9 passed, 1 warning in 0.88s =========================
+
+PROCESS_EXIT_CODE: 0
